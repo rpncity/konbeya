@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KONBEYA</title>
+    <link rel="icon" sizes="16x16" href="images/favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <img src="images/konbeya.png" alt="Game Logo" class="logo">
+    </header>
+    <div id="game-container">
+        <div id="scores-waste">
+            <div class="color-stats">
+                <span class="emoji">🟢</span> Green
+                <div>Score: <span id="green-score">0</span>/<input type="number" id="green-goal" value="5" class="small-input"></div>
+                <div>Waste: <span id="green-waste">0</span>/<input type="number" id="green-waste-limit" value="10" class="small-input"></div>
+            </div>
+            <div class="color-stats">
+                <span class="emoji">🔴</span> Red
+                <div>Score: <span id="crimson-score">0</span>/<input type="number" id="crimson-goal" value="5" class="small-input"></div>
+                <div>Waste: <span id="crimson-waste">0</span>/<input type="number" id="crimson-waste-limit" value="10" class="small-input"></div>
+            </div>
+            <div class="color-stats">
+                <span class="emoji">🔵</span> Blue
+                <div>Score: <span id="blue-score">0</span>/<input type="number" id="blue-goal" value="5" class="small-input"></div>
+                <div>Waste: <span id="blue-waste">0</span>/<input type="number" id="blue-waste-limit" value="10" class="small-input"></div>
+            </div>
+            <div class="color-stats">
+                <span class="emoji">🟡</span> Yellow
+                <div>Score: <span id="yellow-score">0</span>/<input type="number" id="yellow-goal" value="5" class="small-input"></div>
+                <div>Waste: <span id="yellow-waste">0</span>/<input type="number" id="yellow-waste-limit" value="10" class="small-input"></div>
+            </div>
+            <div class="color-stats">
+                <span class="emoji">🟣</span> Purple
+                <div>Score: <span id="purple-score">0</span>/<input type="number" id="purple-goal" value="5" class="small-input"></div>
+                <div>Waste: <span id="purple-waste">0</span>/<input type="number" id="purple-waste-limit" value="10" class="small-input"></div>
+            </div>
+            <div class="color-stats">
+                <span class="emoji">🟠</span> Orange
+                <div>Score: <span id="orange-score">0</span>/<input type="number" id="orange-goal" value="5" class="small-input"></div>
+                <div>Waste: <span id="orange-waste">0</span>/<input type="number" id="orange-waste-limit" value="10" class="small-input"></div>
+            </div>
+            <div class="color-stats">
+                <span class="emoji">⚪</span> White
+                <div>Score: <span id="white-score">0</span>/<input type="number" id="white-goal" value="5" class="small-input"></div>
+                <div>Waste: <span id="white-waste">0</span>/<input type="number" id="white-waste-limit" value="10" class="small-input"></div>
+            </div>
+        </div>
+        <div id="main-area">
+            <div id="grid-container"></div>
+            <div id="controls">
+                <button id="start-btn">Start</button>
+                <button id="stop-btn" disabled>Stop</button>
+                <button id="reset-btn">Reset</button>
+                <button id="undo-btn" disabled>Undo</button>
+                <button id="clear-inventory-btn">Clear Inventory</button>
+                <button id="save-btn">Save Level</button>
+                <button id="load-btn">Load Level</button>
+                <input type="file" id="file-input" style="display:none">
+            </div>
+        </div>
+        <div id="inventory">
+            <h2>Inventory</h2>
+            <div id="inventory-grid"></div>
+        </div>
+    </div>
+    <div id="win-screen">
+        <h1>You Win!</h1>
+        <button id="play-again-btn">Play Again</button>
+    </div>
+    <script src="game-logic.js"></script>
+    <script src="display.js"></script>
+</body>
+</html>

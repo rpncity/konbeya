@@ -1,0 +1,301 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: black;
+    color: white;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+header {
+    background-color: #000000;
+    padding: 1px 0;
+    text-align: center;
+}
+
+.logo {
+    max-height: 40px;
+    width: auto;
+}
+
+#game-container {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    flex-grow: 1;
+    padding-top: 0px;
+}
+
+#scores-waste {
+    width: 150px;
+    padding: 21px;
+    
+    align-items: center;
+}
+
+.color-stats {
+    margin-bottom: 15px;
+    font-size: 14px;
+}
+
+.emoji {
+    font-size: 18px;
+    margin-right: 5px;
+}
+
+.small-input {
+    width: 40px;
+    background-color: #333;
+    color: white;
+    border: 1px solid #888;
+    padding: 2px 5px;
+    font-size: 12px;
+}
+
+#main-area {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#grid-container {
+    display: inline-block;
+    border-top: 1.5px dotted #888;
+    border-left: 1.5px dotted #888;
+    margin: 10px;
+}
+
+.tile {
+    width: 50px;
+    height: 50px;
+    border-right: 1.5px dotted #888;
+    border-bottom: 1.5px dotted #888;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 18px;
+    cursor: pointer;
+    position: relative;
+}
+
+.conveyor {
+    background-color: #333;
+    background-image: radial-gradient(circle, #555 1px, transparent 1px);
+    background-size: 5px 5px;
+}
+
+.object {
+    position: absolute;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    border: 1px solid black;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+#inventory {
+    width: 200px;
+    padding: 10px;
+    
+    
+}
+
+#inventory-grid {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 5px;
+    
+}
+
+.inventory-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.inventory-item.selected .tile {
+    outline: 2px solid yellow;
+}
+
+.inventory-item .tile {
+    margin-bottom: 2px;
+}
+
+.inventory-item .modify-quantity {
+    display: flex;
+}
+
+.inventory-item .modify-quantity button {
+    padding: 2px 5px;
+    margin: 0 2px;
+}
+
+button {
+    margin-right: 10px;
+    padding: 5px 10px;
+    background-color: #444;
+    color: white;
+    border: 1px solid #888;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #555;
+}
+
+button:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+#win-screen {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.8);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    z-index: 1000;
+    display: none;
+}
+
+#win-screen h1 {
+    font-size: 48px;
+    color: gold;
+}
+
+.wall {
+    background-color: #666;
+    background-image: radial-gradient(circle, #888 1px, transparent 1px);
+    background-size: 5px 5px;
+}
+
+.direction-change {
+    background-color: #333;
+    background-image: radial-gradient(circle, #555 1px, transparent 1px);
+    background-size: 5px 5px;
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 24px;
+}
+
+.direction-change .next-direction {
+    color: #00ff00;
+    margin-right: 5px;
+}
+
+.direction-change .current-direction {
+    color: #ff0000;
+}
+
+/* Mobile responsiveness */
+@media (max-width: 1024px) {
+    #game-container {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    #scores-waste {
+        width: 100%;
+        max-width: 800px;
+        border-right: none;
+        border-bottom: 1px solid #333;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: left;
+        display: grid;
+        grid-template-columns: repeat(7, 1fr);
+    }
+
+    .color-stats {
+        width: calc(25% - 10px);
+        margin: 1px;
+    }
+
+    #inventory {
+        width: 100%;
+        max-width: 600px;
+        border-left: none;
+        border-top: 1px solid #333;
+    }
+
+    #inventory-grid {
+        grid-template-columns: repeat(7, 1fr);
+    }
+}
+#grid-container {
+    display: inline-block;
+    border-top: 2px dotted #888;
+    border-left: 2px dotted #888;
+    
+    
+}
+.tile {
+    width: 50px;
+    height: 50px;
+    border-right: 2px dotted #888;
+    border-bottom: 2px dotted #888;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 18px;
+    cursor: pointer;
+    position: relative;
+}
+@media (max-width: 768px) {
+    .color-stats {
+        width: calc(33.33% - 10px);
+    }
+
+    .tile {
+        width: 40px;
+        height: 40px;
+        font-size: 16px;
+    }
+
+    .object {
+        width: 30px;
+        height: 30px;
+    }
+
+    #controls {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    #controls button {
+        margin: 5px;
+    }
+}
+
+@media (max-width: 480px) {
+    .color-stats {
+        width: calc(50% - 10px);
+    }
+
+    .tile {
+        width: 30px;
+        height: 30px;
+        font-size: 14px;
+    }
+
+    .object {
+        width: 24px;
+        height: 24px;
+    }
+
+    #inventory-grid {
+        grid-template-columns: repeat(4, 1fr);
+    }
+}
