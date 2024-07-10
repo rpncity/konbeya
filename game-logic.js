@@ -717,28 +717,4 @@ document.addEventListener('DOMContentLoaded', function() {
     initializeGrid();
     renderObjects();
 
-    // Set up event listeners for buttons
-    document.getElementById('start-btn').addEventListener('click', startSimulation);
-    document.getElementById('stop-btn').addEventListener('click', stopSimulation);
-    document.getElementById('reset-btn').addEventListener('click', resetGame);
-    document.getElementById('undo-btn').addEventListener('click', undo);
-    document.getElementById('play-again-btn').addEventListener('click', resetGame);
-    document.getElementById('save-btn').addEventListener('click', saveLevel);
-    document.getElementById('load-btn').addEventListener('click', () => document.getElementById('file-input').click());
-    document.getElementById('file-input').addEventListener('change', loadLevel);
-    document.getElementById('clear-inventory-btn').addEventListener('click', clearInventory);
-    document.getElementById('crimson-goal').addEventListener('input', updateGoals);
-    document.getElementById('green-goal').addEventListener('input', updateGoals);
-    document.getElementById('blue-goal').addEventListener('input', updateGoals);
-    document.getElementById('yellow-goal').addEventListener('input', updateGoals);
-    document.getElementById('purple-goal').addEventListener('input', updateGoals);
-    document.getElementById('orange-goal').addEventListener('input', updateGoals);
-    document.getElementById('white-goal').addEventListener('input', updateGoals);
-    document.getElementById('crimson-waste-limit').addEventListener('input', updateWasteLimits);
-    document.getElementById('green-waste-limit').addEventListener('input', updateWasteLimits);
-    document.getElementById('blue-waste-limit').addEventListener('input', updateWasteLimits);
-    document.getElementById('yellow-waste-limit').addEventListener('input', updateWasteLimits);
-    document.getElementById('purple-waste-limit').addEventListener('input', updateWasteLimits);
-    document.getElementById('orange-waste-limit').addEventListener('input', updateWasteLimits);
-    document.getElementById('white-waste-limit').addEventListener('input', updateWasteLimits);
 });
