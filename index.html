@@ -3,75 +3,191 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>KONBEYA</title>
+    <title>Konbeya</title>
     <link rel="icon" sizes="16x16" href="images/favicon.ico" type="image/x-icon">
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
+    <div id="theme-switcher">
+        <select id="theme-select">
+            <option value="dark">Dark</option>
+            <option value="light">Light</option>
+            <option value="gruvbox">Gruvbox</option>
+            <option value="dark-green">Green</option>
+        <option value="dracula">Dracula</option>
+        <option value="grey">Grey</option>
+        <option value="blue">Blue</option>
+        <option value="indigo">Purple</option>
+        <option value="red">Red</option>
+        <option value="sunny">Sunny</option>
+        <option value="windows">Windows</option>
+        <option value="matrix">Matrix</option>
+        
+
+        </select>
+        <p>
+        <button id="tutorial-btn">Tutorial</button>
+        </p>
+    </div>
+    
+
     <header>
         <img src="images/konbeya.png" alt="Game Logo" class="logo">
     </header>
+
     <div id="game-container">
         <div id="scores-waste">
-            <div class="color-stats">
-                <span class="emoji">🟢</span> Green
-                <div>Score: <span id="green-score">0</span>/<input type="number" id="green-goal" value="5" class="small-input"></div>
-                <div>Waste: <span id="green-waste">0</span>/<input type="number" id="green-waste-limit" value="10" class="small-input"></div>
-            </div>
-            <div class="color-stats">
-                <span class="emoji">🔴</span> Red
-                <div>Score: <span id="crimson-score">0</span>/<input type="number" id="crimson-goal" value="5" class="small-input"></div>
-                <div>Waste: <span id="crimson-waste">0</span>/<input type="number" id="crimson-waste-limit" value="10" class="small-input"></div>
-            </div>
-            <div class="color-stats">
-                <span class="emoji">🔵</span> Blue
-                <div>Score: <span id="blue-score">0</span>/<input type="number" id="blue-goal" value="5" class="small-input"></div>
-                <div>Waste: <span id="blue-waste">0</span>/<input type="number" id="blue-waste-limit" value="10" class="small-input"></div>
-            </div>
-            <div class="color-stats">
-                <span class="emoji">🟡</span> Yellow
-                <div>Score: <span id="yellow-score">0</span>/<input type="number" id="yellow-goal" value="5" class="small-input"></div>
-                <div>Waste: <span id="yellow-waste">0</span>/<input type="number" id="yellow-waste-limit" value="10" class="small-input"></div>
-            </div>
-            <div class="color-stats">
-                <span class="emoji">🟣</span> Purple
-                <div>Score: <span id="purple-score">0</span>/<input type="number" id="purple-goal" value="5" class="small-input"></div>
-                <div>Waste: <span id="purple-waste">0</span>/<input type="number" id="purple-waste-limit" value="10" class="small-input"></div>
-            </div>
-            <div class="color-stats">
-                <span class="emoji">🟠</span> Orange
-                <div>Score: <span id="orange-score">0</span>/<input type="number" id="orange-goal" value="5" class="small-input"></div>
-                <div>Waste: <span id="orange-waste">0</span>/<input type="number" id="orange-waste-limit" value="10" class="small-input"></div>
-            </div>
-            <div class="color-stats">
-                <span class="emoji">⚪</span> White
-                <div>Score: <span id="white-score">0</span>/<input type="number" id="white-goal" value="5" class="small-input"></div>
-                <div>Waste: <span id="white-waste">0</span>/<input type="number" id="white-waste-limit" value="10" class="small-input"></div>
-            </div>
+            <!-- Existing score and waste elements -->
         </div>
+
         <div id="main-area">
             <div id="grid-container"></div>
+
             <div id="controls">
                 <button id="start-btn">Start</button>
                 <button id="stop-btn" disabled>Stop</button>
-                <button id="reset-btn">Reset</button>
+                <button id="pause-btn">Pause</button>
+                <button id="reset-clear-btn">Reset</button>
                 <button id="undo-btn" disabled>Undo</button>
-                <button id="clear-inventory-btn">Clear Inventory</button>
-                <button id="save-btn">Save Level</button>
-                <button id="load-btn">Load Level</button>
-                <input type="file" id="file-input" style="display:none">
+                
+                <button id="eraser-btn" class="free-mode-element" style="display: none;">Eraser</button>
+               
+                <div class="dropdown">
+                    <button id="options-menu-btn">Options ▼</button>
+                    <div id="options-menu" class="dropdown-content">
+                        <button id="toggle-free-mode-btn">Open Editor</button>
+                        <button id="export-seed-btn">Export Seed</button>
+                        <button id="import-seed-btn">Import Seed</button>
+                        <button id="colorblind-toggle">Toggle Color Blind Mode</button>
+
+                    </div>
+                </div>
+                <select id="level-select">
+                    <option value="">Select a level</option>
+                    
+                </select>
+               
             </div>
+             <input type="range" id="rewind-slider" min="0" max="100" value="0" style="display: none;">
         </div>
+
         <div id="inventory">
             <h2>Inventory</h2>
             <div id="inventory-grid"></div>
         </div>
     </div>
-    <div id="win-screen">
-        <h1>You Win!</h1>
-        <button id="play-again-btn">Play Again</button>
+
+    
+      
+        
+        </div>
+      </div>
+
+  <div id="win-screen" style="display: none;">
+    <h1>Well Done</h1>
+    <div id="win-stats"></div>
+    <div id="charts-container">
+        <div id="steps-chart" class="chart"></div>
+        <div id="tiles-chart" class="chart"></div>
     </div>
+    <div id="gif-container">
+        <div id="loading-animation" style="display: none;">
+            <div class="loading-square">
+                <div class="loading-fill"></div>
+                <div class="loading-text">0%</div>
+            </div>
+            
+        </div>
+    </div>
+    <img id="exported-gif" style="display: none;" alt="Exported GIF">
+    <div id="win-screen-buttons">
+        <button id="play-again-btn">Play Again</button>
+        <button id="export-gif-btn">Export GIF</button>
+
+    </div>
+    
+</div>
+
+    <div id="loss-screen" style="display: none;">
+        <h1>Game Over</h1>
+        <p>Waste limit exceeded!</p>
+        <button id="try-again-btn">Try Again</button>
+    </div>
+    <img id="exported-gif" style="display: none;" alt="Exported GIF">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gif.js/0.2.0/gif.js"></script>
     <script src="game-logic.js"></script>
     <script src="display.js"></script>
+    <script src="https://d3js.org/d3.v7.min.js"></script>
+    <div id="load-seed-modal" class="modal">
+        <div class="modal-content">
+          <span class="close">&times;</span>
+          <h2>Load Level Seed</h2>
+          <p>Enter your level seed:</p>
+          <textarea id="load-seed-text" rows="4" placeholder="Paste your level seed here"></textarea>
+          <button id="load-seed-btn">Load Seed</button>
+        </div>
+      </div>
+      <div id="seed-modal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>Export Level Seed</h2>
+            <p>Here's your level seed:</p>
+            <textarea id="seed-text" readonly></textarea>
+            <div class="copy-container">
+                <button id="copy-seed">Copy to Clipboard</button>
+                <span id="copy-feedback" style="display: none; color: green; margin-left: 10px;">Text copied to clipboard.</span>
+            </div>
+        </div>
+    </div>
+    <div id="tutorial-modal" class="modal">
+        <div class="modal-content">
+          <span class="close">&times;</span>
+          <div class="tab">
+            <button class="tablinks active" onclick="openTab(event, 'Basics')">Basics</button>
+            <button class="tablinks" onclick="openTab(event, 'Conveyors')">Conveyors</button>
+            <button class="tablinks" onclick="openTab(event, 'Converters')">Converters</button>
+            <button class="tablinks" onclick="openTab(event, 'Special Tiles')">Special Tiles</button>
+          </div>
+          <div id="Basics" class="tabcontent" style="display: block;">
+            <h3>Basics</h3>
+            <p>Konbeya is a game about transporting objects from sender tiles ► to receiver tiles ◯ using conveyor belt tiles →.</p>
+            <img src="images/tab1g.gif" alt="Basics" class="modal-image">
+            <p>In order to complete a level, you must reach the goal value for all the colors in the level without exceeding your waste value.</p>
+            <img src="images/tab1_2.gif" alt="Basics 2" class="modal-image">
+            <p>If you exceed your goal value, you enter "overflow", so any subsequent objects that enter the receiver get added to the waste value.</p>
+            <p>Objects also go to waste if they enter a receiver tile other than their respective color, if they enter a sender tile, or if they enter an empty tile.</p>
+          </div>
+          <div id="Conveyors" class="tabcontent">
+            <h3>Conveyors</h3>
+            <p>Conveyor tiles are the main way to transport objects in this game. There is a conveyor tile for each cardinal direction. </p>
+            <img src="images/tab2_1.gif" alt="Conveyors" class="modal-image">
+            <p>While selecting a different conveyor tile direction in your inventory, you can left-click 🖱 to create a switch tile, which alternates directions every time an object enters it.</p>
+          </div>
+          <div id="Converters" class="tabcontent">
+            <h3>Converters</h3>
+            <p>Not every level is going to have a receiver tile for every sender tile. That is where converters ⇉ come in. Primary colors can get converted to a secondary color with a different color converter. The order is:
+                <ul><li>Blue + Red = Purple</li>
+                    <li> Blue + Yellow = Green</li>
+                    <li>Yellow + Red = Orange</li></ul>
+                Secondary color objects simply pass through converter tiles unless it is a white converter, which converts any color object to white. Similarly, white objects can be converted to any primary color.
+                <img src="images/tab3_1.gif" alt="Converters" class="modal-image">
+            </p>
+          </div>
+          <div id="Special Tiles" class="tabcontent">
+            <h3>Special Tiles</h3>
+            <p>In addition to the converters, conveyors, senders, and receivers, there are a few special tiles that serve unique functions.</p>
+            <h4>Wall Tiles</h4>
+            <p>Wall tiles block objects that are heading towards it. This can be useful for managing waste. </p>
+            <img src="images/tab4_1.gif" alt="Wall Tiles" class="modal-image">
+            <h4>Portal Tiles</h4>
+            <p>Like the titular game, objects that enter one portal tile exit through its pair. Portal tile pairs are denoted by the numbers in their top left corner. You can rotate the direction that objects exit the portal tile by 🖱 left-clicking it.</p>
+            <img src="images/tab4_2.gif" alt="Portal Tiles" class="modal-image">
+            <h4>Lock Tiles</h4>
+            <img src="images/tab4_3.gif" alt="Lock Tiles" class="modal-image">
+            <p>These tiles lock switch tiles to their current direction when an object passes through them. The lock is released when the lock tile is passed through again.</p> 
+        </div>
+        </div>
+      </div>
 </body>
 </html>
